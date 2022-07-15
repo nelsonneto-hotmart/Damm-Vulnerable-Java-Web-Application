@@ -23,5 +23,5 @@ jobs:
         with:
           base_uri: https://eu.ast.checkmarx.net/
           cx_tenant: beta_nova8
-          cx_client_id: ${{ secrets.CX_CLIENT_ID }}
-          cx_client_secret: ${{ secrets.CX_CLIENT_SECRET }}
+          cx_client_id: GitLab_CI
+          cx_client_secret: be58362a-9818-40cd-a886-512920367a2c

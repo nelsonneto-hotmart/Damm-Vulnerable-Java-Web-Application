@@ -17,7 +17,6 @@ docker-compose build
 
 ## teste
 
-## teste
 
 ## Requirements
 

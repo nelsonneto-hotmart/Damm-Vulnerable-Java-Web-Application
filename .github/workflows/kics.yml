@@ -19,7 +19,7 @@ jobs:
         with:
           path: 'terraform'
           profiling: MEM
-          output_path: kics
+          output_path: kics/
           output_formats: 'json,sarif'
       - name: Show results
         run: |

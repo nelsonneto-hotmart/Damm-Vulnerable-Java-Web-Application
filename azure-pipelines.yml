@@ -4,8 +4,12 @@ pool:
   vmImage: "ubuntu-latest"
 container: checkmarx/kics:debian
 steps:
-  # running in CI mode, exporting results to a JSON file and printing the results in stdout
-  # KICS should fail the pipeline if results are found
+  # run in CI mode, do not fail the pipeline on results found and export the report in both json and SARIF format.
   - script: |
-      /app/bin/kics scan --ci -p ${PWD} -o ${PWD}
+      /app/bin/kics scan --ci -p ${PWD} -o ${PWD} --report-formats json,sarif --ignore-on-exit results
       cat results.json
+  # scan results should be visible in the SARIF viewer tab of the build.
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: $(System.DefaultWorkingDirectory)/results.sarif
+      artifactName: CodeAnalysisLogs

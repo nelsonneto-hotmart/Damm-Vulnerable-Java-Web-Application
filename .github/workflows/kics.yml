@@ -18,6 +18,7 @@ jobs:
         uses: checkmarx/kics-github-action@v1.7.0
         with:
           path: 'terraform'
+          profiling: MEM
           output_path: kics
           output_formats: 'json,sarif'
       - name: Show results

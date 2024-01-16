@@ -17,15 +17,13 @@ jobs:
       - name: Run KICS Scan with SARIF result
         uses: checkmarx/kics-github-action@v1.7.0
         with:
-          path: 'terraform'
-          profiling: MEM
-          output_path: kics/
-          output_formats: 'json,sarif'
-      - name: Show results
-        run: |
-          cat kics/results.sarif
-          cat kics/results.json
-      - name: Upload SARIF file
-        uses: github/codeql-action/upload-sarif@v1
+          path: "./Dockerfile"
+          ignore_on_exit: results
+          enable_comments: true
+          output_path: ./results
+          output_formats: json,html
+          type: dockerfile
+      - uses: actions/upload-artifact@v3
         with:
-          sarif_file: kics/results.sarif
+          name: results
+          path: ./results

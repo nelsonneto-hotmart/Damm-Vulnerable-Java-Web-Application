@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Mkdir results-dir
+      - name: Mkdir kics
         # make sure results dir is created
-        run: mkdir -p results-dir
+        run: mkdir -p kics
       - name: Run KICS Scan with SARIF result
         uses: checkmarx/kics-github-action@v1.7.0
         with:
@@ -22,9 +22,9 @@ jobs:
           output_formats: 'json,sarif'
       - name: Show results
         run: |
-          cat results-dir/results.sarif
-          cat results-dir/results.json
+          cat kicsresults.sarif
+          cat kics/results.json
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v1
         with:
-          sarif_file: results-dir/results.sarif
+          sarif_file: kics/results.sarif

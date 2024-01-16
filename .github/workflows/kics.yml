@@ -11,9 +11,9 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
-      - name: Mkdir kics
+      - name: Mkdir results
         # make sure results dir is created
-        run: mkdir -p kics
+        run: mkdir -p results
       - name: Run KICS Scan with SARIF result
         uses: checkmarx/kics-github-action@v1.7.0
         with:
